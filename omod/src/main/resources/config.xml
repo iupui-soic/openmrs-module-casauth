@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE module PUBLIC "-//OpenMRS//DTD OpenMRS Config 1.0//EN" "http://resources.openmrs.org/doctype/config-1.0.dtd">
+<module configVersion="1.2">">
+
+    <id>casauth</id>
+    <name>CAS Authentication</name>
+    <version>1.0.0</version>
+    <package>org.openmrs.module.casauth</package>
+    <author>IUPUI BioHealth Informatics</author>
+    <description></description>
+
+    <activator>org.openmrs.module.casauth.CasAuthActivator</activator>
+    <require_version>1.8.0</require_version>
+	
+    <!-- Require Global Properties -->
+    <globalProperty>
+        <property>casauth.endpoint.login</property>
+        <defaultValue></defaultValue>
+        <description>The URL from CAS server for user login</description>
+    </globalProperty>
+    <globalProperty>
+        <property>casauth.endpoint.appcode</property>
+        <defaultValue></defaultValue>
+        <description>The application code that is identifiable by your CAS server</description>
+    </globalProperty>
+    <globalProperty>
+        <property>casauth.endpoint.validate</property>
+        <defaultValue></defaultValue>
+        <description>The URL from CAS server for validating a casticket</description>
+    </globalProperty>
+    <globalProperty>
+        <property>casauth.endpoint.logout</property>
+        <defaultValue></defaultValue>
+        <description>The URL from CAS server that is used to logout an authenticated user</description>
+    </globalProperty>
+    <globalProperty>
+        <property>casauth.superuser.username</property>
+        <defaultValue></defaultValue>
+        <description>The URL from CAS server that is used to logout an authenticated user</description>
+    </globalProperty>
+    <globalProperty>
+        <property>casauth.superuser.password</property>
+        <defaultValue></defaultValue>
+        <description>The URL from CAS server that is used to logout an authenticated user</description>
+    </globalProperty>
+	
+    <!-- Internationalization -->
+    <messages>
+        <lang>en</lang>
+        <file>messages.properties</file>
+    </messages>
+    <messages>
+        <lang>fr</lang>
+        <file>messages_fr.properties</file>
+    </messages>
+    <messages>
+        <lang>es</lang>
+        <file>messages_es.properties</file>
+    </messages>
+
+</module>
