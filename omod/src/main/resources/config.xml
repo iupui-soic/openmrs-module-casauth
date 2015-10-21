@@ -7,7 +7,7 @@
     <version>1.0.0</version>
     <package>org.openmrs.module.casauth</package>
     <author>IUPUI BioHealth Informatics</author>
-    <description></description>
+    <description>Authentication using SSO service provided by Central Authentication Service (CAS)</description>
 
     <activator>org.openmrs.module.casauth.CasAuthActivator</activator>
     <require_version>1.8.0</require_version>
@@ -36,12 +36,12 @@
     <globalProperty>
         <property>casauth.superuser.username</property>
         <defaultValue></defaultValue>
-        <description>The URL from CAS server that is used to logout an authenticated user</description>
+        <description>The username of the CAS superuser that will authenticate the logging in user</description>
     </globalProperty>
     <globalProperty>
-        <property>casauth.superuser.password</property>
+        <property>casauth.superuser.zpassword</property>
         <defaultValue></defaultValue>
-        <description>The URL from CAS server that is used to logout an authenticated user</description>
+        <description>The password of the CAS superuser that will authenticate the logging in user</description>
     </globalProperty>
 	
     <!-- Internationalization -->

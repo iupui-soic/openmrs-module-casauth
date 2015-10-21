@@ -22,6 +22,17 @@
 
     <!-- Add here beans related to the web context -->
 
-    <!-- Annotation based controllers -->
-    <context:component-scan base-package="org.openmrs.module.oncologypoc.web.controller" />
+        <bean id="casauthUrlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+            <property name="order">
+                <value>98</value>
+            </property>
+            <property name="mappings">
+                <props>
+                    <prop key="/login.htm">loginInterceptController</prop>
+                </props>
+            </property>
+        </bean>
+    
+        <bean id="loginInterceptController" class="org.openmrs.module.casauth.web.controller.LoginInterceptController" />
+    
 </beans>
