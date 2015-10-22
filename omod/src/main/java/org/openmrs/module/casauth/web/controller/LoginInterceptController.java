@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.openmrs.User;
 import org.openmrs.api.context.Context;
+import org.openmrs.api.context.ContextAuthenticationException;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.AbstractController;
 
@@ -36,14 +37,19 @@ public class LoginInterceptController extends AbstractController {
 			conn.setRequestMethod("GET");
 			conn.setDoOutput(true);
 			BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-			if (in.readLine().equals("yes")) {
-				String superuserUsername = Context.getAdministrationService()
-				        .getGlobalProperty("casauth.superuser.username");
-				String superuserPassword = Context.getAdministrationService().getGlobalProperty(
-				    "casauth.superuser.zpassword");
-				String user = in.readLine();
-				Context.authenticate(superuserUsername, superuserPassword);
-				Context.becomeUser(user);
+			try {
+				if (in.readLine().equals("yes")) {
+					String superuserUsername = Context.getAdministrationService().getGlobalProperty(
+					    "casauth.superuser.username");
+					String superuserPassword = Context.getAdministrationService().getGlobalProperty(
+					    "casauth.superuser.zpassword");
+					String user = in.readLine();
+					Context.authenticate(superuserUsername, superuserPassword);
+					Context.becomeUser(user);
+				}
+			}
+			catch (ContextAuthenticationException casex) {
+				Context.logout();
 			}
 			in.close();
 		}
