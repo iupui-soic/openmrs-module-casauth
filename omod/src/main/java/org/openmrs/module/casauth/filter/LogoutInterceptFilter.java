@@ -18,8 +18,9 @@ import javax.servlet.http.HttpServletResponse;
 import org.openmrs.api.context.Context;
 
 /**
+ * This is used to intercept the /logout URL which is normally dealt with the logoutServlet. 
+ * Thus, this could not be done through a Spring controller and hence needs a module filter.
  * @author sunbiz
- * 
  */
 //TODO: verify if local logout has not thrown an exception
 //TODO: intercept the /session method DELETE call to deal with logout from REST client app

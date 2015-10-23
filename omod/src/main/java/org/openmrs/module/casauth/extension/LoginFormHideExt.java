@@ -8,7 +8,7 @@ package org.openmrs.module.casauth.extension;
 import org.openmrs.module.Extension;
 
 /**
- *
+ * The extension adds a JavaScript call that hides the login form
  * @author sunbiz
  */
 public class LoginFormHideExt extends Extension {

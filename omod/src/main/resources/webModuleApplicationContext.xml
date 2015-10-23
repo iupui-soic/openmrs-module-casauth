@@ -21,18 +21,19 @@
   		    http://www.springframework.org/schema/util/spring-util-3.0.xsd">
 
     <!-- Add here beans related to the web context -->
-
-        <bean id="casauthUrlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
-            <property name="order">
-                <value>98</value>
-            </property>
-            <property name="mappings">
-                <props>
-                    <prop key="/login.htm">loginInterceptController</prop>
-                </props>
-            </property>
-        </bean>
     
-        <bean id="loginInterceptController" class="org.openmrs.module.casauth.web.controller.LoginInterceptController" />
+    <!-- XML config required to take precedence over annotation-based config from reference application -->
+    <bean id="casauthUrlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+        <property name="order">
+            <value>98</value>
+        </property>
+        <property name="mappings">
+            <props>
+                <prop key="/login.htm">loginInterceptController</prop>
+            </props>
+        </property>
+    </bean>
+    
+    <bean id="loginInterceptController" class="org.openmrs.module.casauth.web.controller.LoginInterceptController" />
     
 </beans>

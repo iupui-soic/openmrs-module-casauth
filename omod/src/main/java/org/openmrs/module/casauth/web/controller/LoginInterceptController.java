@@ -19,12 +19,22 @@ import org.openmrs.api.context.ContextAuthenticationException;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.AbstractController;
 
+/**
+ * This controller intercepts the /login.htm URL and handles that request. This takes 
+ * precedence over annotation-based controller that is used in the Reference application. 
+ * The controller checks if a casticket parameter is passed. If this is passed then 
+ * casticket is validation by using a HttpURLConnection and if the response contains "yes" 
+ * and username, then it logins as that username.
+ * See details of CAS authentication - https://kb.iu.edu/d/atfc
+ * @author sunbiz
+ */
 public class LoginInterceptController extends AbstractController {
 	
 	@Override
 	public ModelAndView handleRequestInternal(HttpServletRequest req, HttpServletResponse res) throws MalformedURLException,
 	        IOException {
 		String casTicket = req.getParameter("casticket");
+		//CAS ticket is only available after login has completed and needs validation
 		if (casTicket == null) {
 			User autheticatedUser = Context.getAuthenticatedUser();
 			if (autheticatedUser == null) {
@@ -38,11 +48,15 @@ public class LoginInterceptController extends AbstractController {
 			String casAppCode = Context.getAdministrationService().getGlobalProperty("casauth.endpoint.appcode");
 			URL url = new URL(casValidateUrl + "?cassvc=" + casAppCode + "&casticket=" + casTicket + "&casurl="
 			        + req.getRequestURL());
+			//a HTTP connection is created to validate the casticket
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 			conn.setRequestMethod("GET");
 			conn.setDoOutput(true);
 			BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
 			try {
+				/**
+				 * The CAS validate response is yes on first line, followed by username on next line
+				 */
 				if (in.readLine().equals("yes")) {
 					String superuserUsername = Context.getAdministrationService().getGlobalProperty(
 					    "casauth.superuser.username");

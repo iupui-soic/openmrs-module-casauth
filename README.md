@@ -4,9 +4,15 @@
 The module allows authentication over CAS - Central authentication service
 
 ## Installation
-Build the module from source. Install the omod file through OpenMRS module management
-Configure the settings for CAS endpoints - login, application code, validate and logout
+Build the module from source. Install the omod file through OpenMRS module management. 
+After installation complete the configuration. The OpenMRS login page is not seen anymore, 
+so location based login is not possible. A default location is selected or login is without a location. 
+For Legacy UI, user needs to click on the login button on the top header to start CAS authentication
+
+## Configuration
+Configure the settings for CAS endpoints - login, application code, validate and logout. 
 Configure the username and password for the user who will be used to authenticate other users.
+A username in OpenMRS should exists as the same username as on CAS, so that the user can be authenticated.
 
 ###Build
 To ensure that your commit builds fine run
