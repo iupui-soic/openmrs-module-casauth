@@ -10,7 +10,7 @@
     <description>Authentication using SSO service provided by Central Authentication Service (CAS)</description>
 
     <activator>org.openmrs.module.casauth.CasAuthActivator</activator>
-    <require_version>1.8.0</require_version>
+    <require_version>1.8.4</require_version>
 	
     <!-- Require Global Properties -->
     <globalProperty>
