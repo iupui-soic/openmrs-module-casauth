@@ -1,3 +1,8 @@
+/**
+ * This Source Code Form is subject to the terms of the Mozilla Public License,
+ * v. 2.0 + Health disclaimer. If a copy of the MPL was not distributed with
+ * this file, You can obtain one at http://license.openmrs.org
+ */
 package org.openmrs.module.casauth.web.controller;
 
 import java.io.BufferedReader;
@@ -53,6 +58,6 @@ public class LoginInterceptController extends AbstractController {
 			}
 			in.close();
 		}
-		return new ModelAndView("index");
+		return new ModelAndView("redirect:/index.htm");
 	}
 }

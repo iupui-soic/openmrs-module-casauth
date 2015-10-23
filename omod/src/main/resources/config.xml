@@ -43,6 +43,11 @@
         <defaultValue></defaultValue>
         <description>The password of the CAS superuser that will authenticate the logging in user</description>
     </globalProperty>
+    
+    <extension>
+        <point>org.openmrs.footerFullBeforeStatusBar</point>
+        <class>@MODULE_PACKAGE@.extension.LoginFormHideExt</class>
+    </extension>
 	
     <!-- Internationalization -->
     <messages>
